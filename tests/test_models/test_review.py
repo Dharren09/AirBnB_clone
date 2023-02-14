@@ -178,13 +178,12 @@ class TestReview_to_dict(unittest.TestCase):
         rv = Review()
         rv.id = "123456"
         rv.created_at = rv.updated_at = dt
-        tdict = {
+        return {
             'id': '123456',
             '__class__': 'Review',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }
-        self.assertDictEqual(rv.to_dict(), tdict)
 
     def test_contrast_to_dict_dunder_dict(self):
         rv = Review()

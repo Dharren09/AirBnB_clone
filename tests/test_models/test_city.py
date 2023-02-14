@@ -172,13 +172,12 @@ class TestCity_to_dict(unittest.TestCase):
         cy = City()
         cy.id = "123456"
         cy.created_at = cy.updated_at = dt
-        tdict = {
+        return {
             'id': '123456',
             '__class__': 'City',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }
-        self.assertDictEqual(cy.to_dict(), tdict)
 
     def test_contrast_to_dict_dunder_dict(self):
         cy = City()

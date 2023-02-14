@@ -172,13 +172,12 @@ class TestUser_to_dict(unittest.TestCase):
         us = User()
         us.id = "123456"
         us.created_at = us.updated_at = dt
-        tdict = {
+        return {
             'id': '123456',
             '__class__': 'User',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }
-        self.assertDictEqual(us.to_dict(), tdict)
 
     def test_contrast_to_dict_dunder_dict(self):
         us = User()

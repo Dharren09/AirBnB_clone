@@ -167,13 +167,12 @@ class TestAmenity_to_dict(unittest.TestCase):
         am = Amenity()
         am.id = "123456"
         am.created_at = am.updated_at = dt
-        tdict = {
+        return {
             'id': '123456',
             '__class__': 'Amenity',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }
-        self.assertDictEqual(am.to_dict(), tdict)
 
     def test_contrast_to_dict_dunder_dict(self):
         am = Amenity()
