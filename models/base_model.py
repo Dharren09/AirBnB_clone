@@ -102,20 +102,30 @@ class BaseModel:
 
     @classmethod
     def update(cls, instance_id, *args):
-        """Updates an instance;
-        if args has one elem and its a dict:
-            it updates by key value
-        else:
-            updates by first being key and second being value"""
-        if not len(args):
+        """Updates an instance"""
+        if not args:
+            print("** instance id missing **")
+            return
+        obj = self.storage.get(args[0])
+        if obj is None:
+            print("** no instance found **")
+            return
+        if len(args) < 2:
             print("** attribute name missing **")
             return
-        if len(args) == 1 and isinstance(args[0], dict):
-            args = args[0].items()
-        else:
-            args = [args[:2]]
-        for arg in args:
-            models.storage.update_one(
-                cls.__name__,
-                instance_id,
-                *arg)
+        if len(args) < 3:
+            print("** value missing **")
+            return
+        setattr(obj, args[1], args[2])
+        self.storage.save()
+        #if not len(args):
+         #   print("** attribute name missing **")
+          #  return
+        #if len(args) == 1 and isinstance(args[0], dict):
+          #  args = args[0].items()
+        #else:
+        #    args = [args[:2]]
+        #for arg in args:
+         #      cls.__name__,
+          #      instance_id,
+           #     *arg)
