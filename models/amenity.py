@@ -39,4 +39,4 @@ class Amenity(BaseModel):
         amenity_dict = super().to_dict()
         amenity_dict["__class__"] = type(self).__name__
         amenity_dict["name"] = type(self).name
-        return 
+        return

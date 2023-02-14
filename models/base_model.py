@@ -118,5 +118,4 @@ class BaseModel:
             models.storage.update_one(
                 cls.__name__,
                 instance_id,
-                *arg
-            )
+                *arg)
